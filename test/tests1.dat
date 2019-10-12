@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <!-- (control test - for the other tests to work, this should pass - you may have to set your defaults appropriately) -->
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
@@ -39,7 +39,7 @@ ISO-8859-2
 <!DOCTYPE HTML>
 <metacharset=iso8859-2>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
@@ -65,67 +65,67 @@ ISO-8859-2
 <!DOCTYPE HTML>
 <meta http-equiv="Content-Type content="text/html; charset=iso8859-2">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta http-equiv="Content-Type " content="text/html; charset=iso8859-2">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta content="text/html; charset=iso8859-2" http-equiv="Content-Type ">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta http-equiv="Content-Type>" content="text/html; charset=iso8859-2">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta content="text/html; charset=iso8859-2" http-equiv="Content-Type>">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta http-equiv="Content-Style-Type" content="text/html; charset=iso8859-2">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta content="text/html; charset=iso8859-2" http-equiv="Content-Style-Type">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta name="Content-Style-Type" content="text/html; charset=iso8859-2">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta content="text/html; charset=iso8859-2" name="Content-Style-Type">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta content="text/html; charset=iso8859-2">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta content=" text/html; charset = iso8859-2 ">
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
@@ -156,14 +156,14 @@ ISO-8859-2
 <meta charset="iso8859-2>
 <p>"</p>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta charset=iso8859-2">
 <p>"</p>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
@@ -184,21 +184,21 @@ ISO-8859-2
 <meta test=" charset=iso8859-2>
 <p>"</p>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta test="' charset=iso8859-2>
 <p>"'</p>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
 <meta test='" charset=iso8859-2>
 <p>'"</p>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
@@ -219,7 +219,7 @@ ISO-8859-2
 <meta test=x" charset=iso8859-2>
 <p>"</p>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
@@ -227,7 +227,7 @@ windows-1252
 <meta test=x charset=iso8859-2>
 <p>"</p>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
@@ -235,7 +235,7 @@ windows-1252
 <meta charset=iso8859-2>
 <p>"</p>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>
@@ -360,7 +360,7 @@ ISO-8859-2
 <!DOCTYPE HTML>
 <script>document.write('<meta charset="ISO-8859-' + '2">')</script>
 #encoding
-windows-1252
+None
 
 #data
 <!DOCTYPE HTML>

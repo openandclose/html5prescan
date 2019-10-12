@@ -1,27 +1,27 @@
 #data
 <meta
 #encoding
-windows-1252
+None
 
 #data
 <
 #encoding
-windows-1252
+None
 
 #data
 <!
 #encoding
-windows-1252
+None
 
 #data
 <meta charset = "
 #encoding
-windows-1252
+None
 
 #data
 <meta charset=euc-jp
 #encoding
-windows-1252
+None
 
 #data
 <meta <meta charset='euc-jp'>
@@ -43,12 +43,12 @@ UTF-8
 <!-- -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf
 #encoding
-windows-1252
+None
 
 #data
 <meta http-equiv="Content-Type<meta charset="utf-8">
 #encoding
-windows-1252
+None
 
 #data
 <meta http-equiv="Content-Type" content="text/html; charset='utf-8'">
@@ -58,17 +58,17 @@ UTF-8
 #data
 <meta http-equiv="Content-Type" content="text/html; charset='utf-8">
 #encoding
-windows-1252
+None
 
 #data
 <meta                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 #encoding
-windows-1252
+None
 
 #data
 <meta charset                    =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 #encoding
-windows-1252
+None
 
 #data
 <meta charset=                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            utf-8
@@ -79,7 +79,7 @@ UTF-8
 #data
 <meta content = "text/html;
 #encoding
-windows-1252
+None
 
 #data
 <meta charset="UTF-16">
