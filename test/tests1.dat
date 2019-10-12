@@ -360,7 +360,7 @@ iso-8859-2
 <!DOCTYPE HTML>
 <script>document.write('<meta charset="ISO-8859-' + '2">')</script>
 #encoding
-iso-8859-2
+Windows-1252
 
 #data
 <!DOCTYPE HTML>
