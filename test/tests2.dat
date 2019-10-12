@@ -26,18 +26,18 @@ windows-1252
 #data
 <meta <meta charset='euc-jp'>
 #encoding
-euc-jp
+EUC-JP
 
 #data
 <meta       charset    =     'euc-jp'>
 #encoding
-euc-jp
+EUC-JP
 
 #data
 <!-- -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 #encoding
-utf-8
+UTF-8
 
 #data
 <!-- -->
@@ -53,7 +53,7 @@ windows-1252
 #data
 <meta http-equiv="Content-Type" content="text/html; charset='utf-8'">
 #encoding
-utf-8
+UTF-8
 
 #data
 <meta http-equiv="Content-Type" content="text/html; charset='utf-8">
@@ -74,7 +74,7 @@ windows-1252
 <meta charset=                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            utf-8
 >
 #encoding
-utf-8
+UTF-8
 
 #data
 <meta content = "text/html;
@@ -84,32 +84,32 @@ windows-1252
 #data
 <meta charset="UTF-16">
 #encoding
-utf-8
+UTF-8
 
 #data
 <meta charset="UTF-16LE">
 #encoding
-utf-8
+UTF-8
 
 #data
 <meta charset="UTF-16BE">
 #encoding
-utf-8
+UTF-8
 
 #data
 <html a=ñ>
 <meta charset="utf-8">
 #encoding
-utf-8
+UTF-8
 
 #data
 <html ñ>
 <meta charset="utf-8">
 #encoding
-utf-8
+UTF-8
 
 #data
 <html>ñ
 <meta charset="utf-8">
 #encoding
-utf-8
+UTF-8
