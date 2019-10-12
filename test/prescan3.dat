@@ -1,0 +1,138 @@
+#data
+<!-- 'abrupt-closing-of-empty-comment' -->
+<!--><meta charset=iso-8859-2>-->
+#encoding
+ISO-8859-2
+
+#data
+<!-- 'abrupt-closing-of-empty-comment' 2 -->
+<!---><meta charset=iso-8859-2>-->
+#encoding
+ISO-8859-2
+
+#data
+<!-- no comment content -->
+<!----><meta charset=iso-8859-2>-->
+#encoding
+ISO-8859-2
+
+#data
+<!-- ignore until first '<' -->
+attribute="<meta charset=iso-8859-2>"
+#encoding
+ISO-8859-2
+
+#data
+<!-- start tag cotinues until no attibutes -->
+<m  <meta charset=iso-8859-2>
+#encoding
+None
+
+#data
+<!-- start tag never ends until no attibutes (until '>') -->
+<m / ; "xxxxx" <meta charset=iso-8859-2>
+#encoding
+None
+
+#data
+<!-- start tag with optional '/' -->
+</m <meta charset=iso-8859-2>
+#encoding
+None
+
+#data
+<!-- insignificant spaces in quote (only in content attribute) -->
+<meta http-equiv="Content-Type" content="  text/html; charset=iso-8859-2  ">
+#encoding
+ISO-8859-2
+
+#data
+<!-- no content type ('text/html') -->
+<meta http-equiv="Content-Type" content="charset=iso-8859-2">
+#encoding
+ISO-8859-2
+
+#data
+<!-- invalid content type -->
+<meta http-equiv="Content-Type" content="xxxxx; charset=iso-8859-2">
+#encoding
+ISO-8859-2
+
+#data
+<!-- no-space-separated charset -->
+<meta http-equiv="Content-Type" content="xxxxxcharset=iso-8859-2">
+#encoding
+ISO-8859-2
+
+#data
+<!-- no-space-separated charset following invalid charset -->
+<meta http-equiv="Content-Type" content="charsetxxxxxcharset=iso-8859-2">
+#encoding
+ISO-8859-2
+
+#data
+<!-- no-space-separated charset immediately following invalid charset -->
+<meta http-equiv="Content-Type" content="charsetcharset=iso-8859-2">
+#encoding
+ISO-8859-2
+
+#data
+<!-- valid charset attribute following three broken attributes -->
+<meta http-equiv="Content-Type content="text/html; charset=iso-8859-2>
+#encoding
+ISO-8859-2
+
+#data
+<!-- unmatched quote in meta content -->
+<!-- web-platform-tests/wpt/blob/master/html/syntax/parsing/quotes-in-meta.html -->
+<!doctype html>
+<meta http-equiv="Content-Type" content='charset="windows-1251'>
+<meta charset=windows-1250>
+#encoding
+windows-1250
+
+#data
+<!-- leading '=' for attribute names and values, rather checking not to freeze -->
+<meta === = = = =charset==greek charset=iso-8859-2>
+#encoding
+ISO-8859-2
+
+#data
+<!-- https://github.com/html5lib/html5lib-python/issues/92 -->
+<meta http-equiv="Content-Type" content="charset=iso8859-2;text/html">
+#encoding
+ISO-8859-2
+
+#data
+<!-- continuous open tag '<' -->
+<<meta charset=iso-8859-2>
+#encoding
+ISO-8859-2
+
+#data
+<!-- just skip to '>' when '</' is found -->
+</xxx<attribute="<meta charset=iso-8859-2>"
+#encoding
+None
+
+#data
+<!-- just skip to '>' when '</' is found 2 -->
+</xxx<attribute="<meta charset=iso-8859-2><meta charset=iso-8859-3>"
+#encoding
+ISO-8859-3
+
+#data
+<html><head><title>xxxxx</title></head><body><h1>xxxxx</h1></body></html><meta charset="iso-8859-2">
+#encoding
+ISO-8859-2
+
+#data
+<meta http-equiv="refresh" http-equiv="Content-Type" content="text/html; charset=iso8859-2">
+#encoding
+None
+
+#data
+<!-- cnn.com -->
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"><meta charset="utf-8">
+#encoding
+UTF-8
