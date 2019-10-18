@@ -50,7 +50,8 @@ class Buffer(object):
         return self.buf[pos:pos + num]  # EOF is b''.
 
     def next(self, num=1):
-        self.pos = min(self.pos + num, self.end + 1)
+        # self.pos = min(self.pos + num, self.end + 1)
+        self.pos = self.pos + num
 
     def is_eof(self):
         if self.pos > self.end:
