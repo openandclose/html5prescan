@@ -1,0 +1,8 @@
+
+prune test
+
+include src/html5prescan/encodings.json
+
+include LICENSE
+include README.rst
+include VERSION
