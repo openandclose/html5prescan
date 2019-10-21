@@ -88,6 +88,13 @@ def _prescan(buf, length=1024, jsonfile=None):  # noqa: C901 too complex (32)
     EOF = buf.is_eof
 
     while not EOF():
+        # shortcut, not in the spec.
+        index = buf.buf.find(b'<', buf.pos)
+        if index == -1:
+            break
+        else:
+            next(index - buf.pos)
+
         if get(4) == b'<!--':
             next(4)
             if get() == b'>':
