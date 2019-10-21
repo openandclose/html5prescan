@@ -9,18 +9,21 @@ DATA = b'<meta charset=greek>'
 
 
 def _test_import():
-    expected = ('greek', 'ISO-8859-7', 'ISO-8859-7')
+    expected = (
+        'greek', 'ISO-8859-7', 'ISO-8859-7', 0, 20, '<meta charset=greek>')
 
     import html5prescan
-    assert html5prescan.get(DATA) == (expected, DATA)
+    scan, data = html5prescan.get(DATA)
+    assert scan[:] == expected
+    assert data == DATA
 
 
 def _test_commandline():
     cmd = ['html5prescan']
-    expected = b"('greek', 'ISO-8859-7', 'ISO-8859-7')\n"
-
+    expected = ("Scan(label='greek', name='ISO-8859-7', pyname='ISO-8859-7'"
+        ", start=0, end=20, match='<meta charset=greek>')\n")
     ret = subprocess.run(cmd, input=DATA, stdout=subprocess.PIPE)
-    assert ret.stdout == expected
+    assert ret.stdout.decode() == expected
 
 
 def _test_register():

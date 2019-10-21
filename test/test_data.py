@@ -14,8 +14,8 @@ import support
 def test(on_error='error'):
     for (i, encoding, data, fname) in support.read_datafiles():
 
-        ret = support.scan.get(data)
-        ret = ret[0][1]
+        ret, buf = support.scan.get(data)
+        ret = ret.name
         if ret is None:
             ret = 'None'
 

@@ -4,15 +4,17 @@
 Prescan a byte string and return WHATWG and Python encoding names.
 
 As a commandline script, it reads standard input,
-and return ``(Encoding Label, Encoding Name, Python codec name)``.
-E.g.
+and return 'Encoding Label', 'Encoding Name', 'Python codec name',
+and the match details.
 
     $ html5prescan
     <meta charset=greek>
     (CTRL+D)
-    ('greek', 'ISO-8859-7', 'ISO-8859-7')
+    Scan(label='greek', name='ISO-8859-7', pyname='ISO-8859-7',
+        start=0, end=20, match='<meta charset=greek>')
 """
 
+from collections import namedtuple
 import json
 import os
 
@@ -29,6 +31,9 @@ PYTHON_NAMES = {
     'replacement': None,
     'x-user-defined': 'windows-1252',
 }
+
+Scan = namedtuple(
+    'Scan', ['label', 'name', 'pyname', 'start', 'end', 'match'])
 
 
 class Buffer(object):
@@ -69,24 +74,24 @@ class Buffer(object):
 
 def _detect_bom(buf):
     if buf.startswith(b'\xEF\xBB\xBF'):
-        return 'UTF-8', buf[3:]
+        return 'UTF-8', 2, 'EFBBBF', buf[3:]
     if buf.startswith(b'\xFE\xFF'):
-        return 'UTF-16BE', buf[2:]
+        return 'UTF-16BE', 1, 'FEFF', buf[2:]
     if buf.startswith(b'\xFF\xFE'):
-        return 'UTF-16LE', buf[2:]
-    return None, buf
+        return 'UTF-16LE', 1, 'FFFE', buf[2:]
+    return None, None, None, buf
 
 
 def _prescan(buf, length=1024, jsonfile=None):  # noqa: C901 too complex (32)
-    """Return a tuple: (Encoding Label, Encoding Name).
+    """Return a tuple: (Encoding Label, Encoding Name, startpos, endpos).
 
-    The WHATWG algorithm discards Encoding Label.
-    So, to keep the Label, the function diverges a little from the spec.
+    The last two indicate the position of matched b'<meta...>' substring.
     """
     buf = Buffer(buf[:length + 1])
     get = buf.get
     next = buf.next
     EOF = buf.is_eof
+    _m_start = 0  # startpos, not in the spec.
 
     while not EOF():
         # shortcut, not in the spec.
@@ -109,6 +114,7 @@ def _prescan(buf, length=1024, jsonfile=None):  # noqa: C901 too complex (32)
                         break
                     next()
         elif get(5).lower() == b'<meta':
+            _m_start = buf.pos
             next(5)
             if get() in (*SPACES, b'/'):
                 next()
@@ -150,7 +156,7 @@ def _prescan(buf, length=1024, jsonfile=None):  # noqa: C901 too complex (32)
                         charset = 'UTF-8'
                     if charset == 'x-user-defined':
                         charset = 'windows-1252'
-                    return label, charset
+                    return label, charset, _m_start, buf.pos
                 continue
         elif (get() == b'<'
                 and (get(2)[1:2].isalpha()
@@ -177,7 +183,7 @@ def _prescan(buf, length=1024, jsonfile=None):  # noqa: C901 too complex (32)
                 next()
         next()  # next byte
 
-    return None, None  # reached EOF
+    return None, None, 0, 0  # reached EOF
 
 
 def _get_an_attribute(buf):
@@ -331,36 +337,69 @@ def get(buf, length=1024, jsonfile=None):
             if other than ``None``, the library uses that instead.
             So it must be the same format.
 
-    :return: tuple ((Encoding Label, Encoding Name, Python codec name), buf).
+    :return: tuple (Scan, buf)
+
+    ``Scan`` is a ``namedtuple`` with fields::
+
+        label:  Encoding Label
+        name:   Encoding Name
+        pyname: Python codec name
+        start:  start position of the match
+        end:    end position of the match
+        match:  matched substring
+
+    The ``match`` is from ``'<meta'`` to the byte position
+    where successful parsing returned.
+
+    ---
 
     First, it checks UTF-8 and UTF-16 BOM, and if it finds one,
-    it returns the encoding tuple and BOM-stripped buf.
-    The tuple items are always the same, e.g. ``(UTF-8, UTF-8, UTF-8)``.
+    it returns ``Scan`` and BOM-stripped buf.
+
+    ``label``, ``name``, and ``pyname`` are always the same,
+    ``start`` is ``0``, ``end`` is BOM end (``1`` or ``2``),
+    and ``match`` is a BOM hint
+    (unicode string 'EFBBBF', 'FEFF', or 'FFFE').
+
+    e.g. ``(UTF-8, UTF-8, UTF-8, 0, 2, 'EFBBBF')``.
+
+    ---
 
     Second, it does prescan, retrieve WHATWG Encoding Name or ``None``.
 
     Third, it resolves the Name to a Python counterpart
     (just codec name, not codec object).
-    If the Name is 'replacement', ``Python codec name`` is ``None``.
+    If the Name is 'replacement', ``pyname`` is ``None``.
+
+    Return ``Scan`` and buf (unchanged).
+
+    ---
+
+    Note:
 
     In prescan, invalid Labels are discarded,
-    so the first two of the encoding tuple are always
+    so the ``label`` and ``name`` are always
     either ``None, None`` or ``(valid) Label, (valid) Name``.
 
-    So the combinations of ``None`` in the encoding tuple are just two.
-    ``(None, None, None)``
-    or ``('<one of replacement Labels>', 'replacement', None)``.
-
-    Return the encoding tuple and buf (unchanged).
+    Thus, the combinations of ``None`` in the encoding fields are just two.
+    ``None, None, None``
+    or ``'<one of replacement Labels>', 'replacement', None``.
     """
     if not isinstance(buf, bytes):
         raise ValueError('Input must be bytes. got %r.' % type(buf))
 
-    encoding, buf = _detect_bom(buf)
+    encoding, end, bom, buf = _detect_bom(buf)
     if encoding:
-        return (encoding, encoding, encoding), buf
-    label, name = _prescan(buf, length, jsonfile)
-    return (label, name, _get_python_codec_name(name)), buf
+        return Scan(encoding, encoding, encoding, 0, end, bom), buf
+
+    label, name, start, end = _prescan(buf, length, jsonfile)
+    match = buf[start:end]
+    pyname = _get_python_codec_name(name)
+    if pyname:
+        match = match.decode(pyname, 'backslashreplace')
+    else:
+        match = match.decode('ascii', 'backslashreplace')
+    return Scan(label, name, pyname, start, end, match), buf
 
 
 def main():

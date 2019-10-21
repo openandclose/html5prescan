@@ -26,24 +26,40 @@ API
 
     html5prescan.get(buf, length=1024, jsonfile=None)
 
-Parse input byte string ``buf``,
-and return ``((Encoding Label, Encoding Name, Python codec name), buf)``.
+Parse input byte string ``buf``, and return ``(Scan, buf)``.
+
+``Scan`` is a ``namedtuple`` with fields::
+
+    label:  Encoding Label
+    name:   Encoding Name
+    pyname: Python codec name
+    start:  start position of the match
+    end:    end position of the match
+    match:  matched substring
+
+The ``match`` is from ``'<meta'`` to the byte position
+where successful parsing returned.
 
 ``Encoding Label`` and ``Encoding Name`` are defined
-in https://encoding.spec.whatwg.org/#names-and-labels.
-The WHATWG site provides ``encodings.json`` file for convenience,
+in `WHATWG Encoding <https://encoding.spec.whatwg.org/#names-and-labels>`__.
+The site provides ``encodings.json`` file for convenience,
 and the library uses the copy of it, when ``jsonfile`` argument is ``None``.
 
 See the docstring of ``html5prescan.get`` for the details
 (e.g. ``$ pydoc 'html5prescan.get'``).
 
+---
+
+As a commandline script, if there is no argument,
+it reads standard input, and return ``Scan``.
+
 .. code-block:: bash
 
     $ html5prescan
-
-As a commandline script, if there is no argument,
-it reads standard input,
-and return ``(Encoding Label, Encoding Name, Python codec name)``.
+    <meta charset=greek>
+    (CTRL+D)
+    Scan(label='greek', name='ISO-8859-7', pyname='ISO-8859-7',
+        start=0, end=20, match='<meta charset=greek>')
 
 In any other cases, it just prints help message.
 
@@ -105,7 +121,7 @@ It is to mask some insecure non-ascii-compatible encodings,
 and it just *decodes* to one ``U+FFFD`` unicode for any length of the input bytes.
 
 Python doesn't have a codec corresponding to this encoding,
-and this library returns ``None`` for ``Python codec name``.
+and this library returns ``None`` for ``pyname``.
 Users may need to add an extra check for this encoding.
 
 The library includes an implementation of this codec (``replacement.py``).
