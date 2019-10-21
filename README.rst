@@ -76,6 +76,27 @@ For validator, I think the reporting is done.
 For the details, see ``test/resource/memo/201910-comparison.rst``.
 
 
+Performance
+-----------
+
+The library imitates WHATWG prescan algorithm in Python code
+(countless small bytes slicing and copying).
+So it is naturally slow.
+But It is better to know how slow.
+
+``scrapy/w3lib`` uses well maintained, therefore, relatively complex, regex search
+to get encoding declaration.
+(I think regex is mostly done in C or below in Python.)
+
+From my humble tests,
+I've got the result that the library is about 20 times slower than w3lib.
+
+I think this is in the range of expectation,
+not good, but not bad either.
+
+For the details, see ``test/resource/memo/201910-performance.rst``.
+
+
 Replacement Encoding
 --------------------
 
@@ -108,27 +129,22 @@ Reference
 
 Relevant WHATWG html specs for prescan are:
 
-    https://html.spec.whatwg.org/multipage/parsing.html#prescan-a-byte-stream-to-determine-its-encoding
-    https://html.spec.whatwg.org/multipage/parsing.html#concept-get-attributes-when-sniffing
-    https://html.spec.whatwg.org/multipage/urls-and-fetching.html#extracting-character-encodings-from-meta-elements
+* https://html.spec.whatwg.org/multipage/parsing.html#prescan-a-byte-stream-to-determine-its-encoding
+* https://html.spec.whatwg.org/multipage/parsing.html#concept-get-attributes-when-sniffing
+* https://html.spec.whatwg.org/multipage/urls-and-fetching.html#extracting-character-encodings-from-meta-elements
 
 Is is just a part of the initial encode determination process.
 
-    https://html.spec.whatwg.org/multipage/parsing.html#determining-the-character-encoding
+* https://html.spec.whatwg.org/multipage/parsing.html#determining-the-character-encoding
 
 ---
 
-validator/htmlparser:
+validator, jsdom, html5-lib, w3lib:
 
-    https://github.com/validator/htmlparser
-
-jsdom/html-encoding-sniffer:
-
-    https://github.com/jsdom/html-encoding-sniffer
-
-html5lib/html5lib-python:
-
-    https://github.com/html5lib/html5lib-python
+* https://github.com/validator/htmlparser
+* https://github.com/jsdom/html-encoding-sniffer
+* https://github.com/html5lib/html5lib-python
+* https://github.com/scrapy/w3lib
 
 
 License
