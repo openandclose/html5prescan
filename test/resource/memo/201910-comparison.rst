@@ -22,7 +22,7 @@ with the same API as this library (reading standard input).
     By using ``html5lib._inputstream.EncodingParser:getEncoding``.
     Skipped BOM related tests and 'utf-16be/utf-16le -> utf-8' conversion tests.
 
-``html5-chardet``
+``html5-chardet:``
     It has it's own ``test-prescan`` commandline program.
     So I used this directly (with ``printf`` formats edited).
     Skipped BOM related tests. Line numbers are a bit different.

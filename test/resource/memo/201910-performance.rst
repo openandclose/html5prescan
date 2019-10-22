@@ -158,9 +158,14 @@ using ``w3lib.encoding.html_body_declared_encoding``. ::
 
 Diff between the library and w3lib (449 vs. 446)::
 
-    books.google.com    <meta http-equiv="content-type"content="text/html; charset=UTF-8">
-    mega.nz             <meta http-equiv="Content-Type" content="text/html, charset=UTF-8" />
-    stuff.co.nz         <meta charset="utf-8"/>
+    books.google.com
+    <meta http-equiv="content-type"content="text/html; charset=UTF-8">  (no space between attributes)
+
+    mega.nz
+    <meta http-equiv="Content-Type" content="text/html, charset=UTF-8" />  (comma, not semicolon)
+
+    stuff.co.nz
+    doc.write('<body onload=[...] <meta charset="utf-8"/>  (matching '<body')
 
 
 Performance

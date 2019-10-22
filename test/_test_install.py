@@ -43,5 +43,6 @@ def run():
     _run(_test_commandline)
     _run(_test_register)
 
+
 if __name__ == '__main__':
     run()
