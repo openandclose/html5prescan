@@ -28,28 +28,6 @@ with the same API as this library (reading standard input).
     Skipped BOM related tests. Line numbers are a bit different.
 
 
-Validator
----------
-
-Validator has two kinds of inconsistencies.
-
-One (the first three of the five) is that when getting Encoding Label,
-it strips special characters (leading, middle, and ending).
-Thus some invalid Labels are made valid.
-
-* charset=iso8859-2" (includes ``"``)
-* charset="ISO-8859-\' + \'2"
-
-The other (the last two) is that when parsing content attribute,
-it doesn't continue to find the second 'charset' characters
-(returns on the first failure).
-
-What I call the reporting:
-
-* https://github.com/validator/validator/issues/874
-* https://github.com/validator/validator/issues/877
-
-
 Results
 -------
 
@@ -92,3 +70,32 @@ Results
     [...]/html5-chardet/test-prescan -v prescan*.dat (html5-chardet):
     prescan3.dat  71 (null) iso-8859-2 '<!-- no-space-separated charset following invalid charset -->\n<meta http-equiv="Content-Type" content="charsetxxxxxcharset=iso-8859-2">'
     prescan3.dat  77 (null) iso-8859-2 '<!-- no-space-separated charset immediately following invalid charset -->\n<meta http-equiv="Content-Type" content="charsetcharset=iso-8859-2">'
+
+
+2020/03/26
+----------
+
+``validator/htmlparser`` had two kinds of bugs, which the maintainer confirmed.
+
+https://github.com/validator/validator/issues/874
+https://github.com/validator/validator/issues/877
+
+``jsdom/html-encoding-sniffer`` had five kinds of bugs,
+four of which I reported and the maintainer confirmed and fixed.
+(one is fixed independently from me).
+
+https://github.com/jsdom/html-encoding-sniffer/issues/4
+https://github.com/jsdom/html-encoding-sniffer/issues/6
+https://github.com/jsdom/html-encoding-sniffer/issues/7
+https://github.com/jsdom/html-encoding-sniffer/issues/8
+
+https://github.com/jsdom/html-encoding-sniffer/commit/0c03ceb824db737bdf0ed54de2224b740832d9da
+
+I think ``html5lib/html5lib-python`` has five kinds of bugs
+(I've got no responses yet).
+
+https://github.com/html5lib/html5lib-python/issues/427
+https://github.com/html5lib/html5lib-python/issues/434
+https://github.com/html5lib/html5lib-python/issues/435
+https://github.com/html5lib/html5lib-python/issues/436
+https://github.com/html5lib/html5lib-python/issues/437

@@ -83,11 +83,10 @@ I also added some more tests ad hoc (``prescan3.dat``).
 
 Then, I tested the test data against well-known libraries
 (``validator``, ``jsdom``, ``html5lib``).
-For non-obvious inconsistencies, that is,
-the ones I particularly wanted to make sure, I reported them upstream.
+I reported all inconsistencies upstream,
+and ``validator`` and ``jsdom`` maintainers confirmed my interpretations.
 
-For validator, I think the reporting is done.
-(So the library is, in a way, a validator conformant).
+So I believe may library and tests are in a good state.
 
 For the details, see ``test/resource/memo/201910-comparison.rst``.
 
