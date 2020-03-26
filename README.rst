@@ -86,7 +86,7 @@ Then, I tested the test data against well-known libraries
 I reported all inconsistencies upstream,
 and ``validator`` and ``jsdom`` maintainers confirmed my interpretations.
 
-So I believe may library and tests are in a good state.
+So I believe my library and tests are in a good state.
 
 For the details, see ``test/resource/memo/201910-comparison.rst``.
 

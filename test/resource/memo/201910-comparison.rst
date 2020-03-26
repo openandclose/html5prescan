@@ -77,25 +77,25 @@ Results
 
 ``validator/htmlparser`` had two kinds of bugs, which the maintainer confirmed.
 
-https://github.com/validator/validator/issues/874
-https://github.com/validator/validator/issues/877
+* https://github.com/validator/validator/issues/874
+* https://github.com/validator/validator/issues/877
 
 ``jsdom/html-encoding-sniffer`` had five kinds of bugs,
 four of which I reported and the maintainer confirmed and fixed.
 (one is fixed independently from me).
 
-https://github.com/jsdom/html-encoding-sniffer/issues/4
-https://github.com/jsdom/html-encoding-sniffer/issues/6
-https://github.com/jsdom/html-encoding-sniffer/issues/7
-https://github.com/jsdom/html-encoding-sniffer/issues/8
+* https://github.com/jsdom/html-encoding-sniffer/issues/4
+* https://github.com/jsdom/html-encoding-sniffer/issues/6
+* https://github.com/jsdom/html-encoding-sniffer/issues/7
+* https://github.com/jsdom/html-encoding-sniffer/issues/8
 
-https://github.com/jsdom/html-encoding-sniffer/commit/0c03ceb824db737bdf0ed54de2224b740832d9da
+* https://github.com/jsdom/html-encoding-sniffer/commit/0c03ceb824db737bdf0ed54de2224b740832d9da
 
 I think ``html5lib/html5lib-python`` has five kinds of bugs
 (I've got no responses yet).
 
-https://github.com/html5lib/html5lib-python/issues/427
-https://github.com/html5lib/html5lib-python/issues/434
-https://github.com/html5lib/html5lib-python/issues/435
-https://github.com/html5lib/html5lib-python/issues/436
-https://github.com/html5lib/html5lib-python/issues/437
+* https://github.com/html5lib/html5lib-python/issues/427
+* https://github.com/html5lib/html5lib-python/issues/434
+* https://github.com/html5lib/html5lib-python/issues/435
+* https://github.com/html5lib/html5lib-python/issues/436
+* https://github.com/html5lib/html5lib-python/issues/437
