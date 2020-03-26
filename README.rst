@@ -4,9 +4,9 @@ html5prescan
 
 This is a python3.5+ library, mainly does what WHATWG html5 spec calls 'prescan'.
 
-1. (Additionally) Check UTF-8 and UTF-16 BOM
+1. Check first UTF-8 and UTF-16 BOM
 2. Prescan (parse <meta> tag to get Encoding Name)
-3. (Try to) Resolve the retrieved Name to a Python codec name
+3. Resolve the retrieved Name to a Python codec name
 
 Note It just returns Python codec *name*, not codec object.
 
@@ -74,8 +74,8 @@ Test Data
 ---------
 
 The test data files are derived from ``html5lib/encoding/tests*.dat`` files.
-The original ones are tests for the entire html parsing, not for prescan proper,
-so I edited them (``prescan1.dat`` and ``prescan2.dat``).
+The original tests are for the main html parser, not for prescan parser,
+so I edited and renamed them (``prescan1.dat`` and ``prescan2.dat``).
 
 See the first six commits for the diffs.
 
