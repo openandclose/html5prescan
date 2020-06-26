@@ -11,7 +11,7 @@ test:
 	python test/test_data.py
 
 tox:
-	tox
+	PYTHONPATH= tox
 
 flake8:
 	flake8 .
