@@ -2,7 +2,7 @@
 html5prescan
 ============
 
-This is a python3.5+ library, mainly does what WHATWG html5 spec calls 'prescan'.
+This is a python3.6+ library, mainly does what WHATWG html5 spec calls 'prescan'.
 
 1. Check first UTF-8 and UTF-16 BOM
 2. Prescan (parse <meta> tag to get Encoding Name)
