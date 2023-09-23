@@ -87,7 +87,7 @@ def _prescan(buf, length=1024, jsonfile=None):  # noqa: C901 too complex (32)
 
     The last two indicate the position of matched b'<meta...>' substring.
     """
-    buf = Buffer(buf[:length + 1])
+    buf = Buffer(buf[:length])
     get = buf.get
     next = buf.next
     EOF = buf.is_eof
