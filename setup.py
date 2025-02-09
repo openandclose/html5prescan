@@ -38,9 +38,6 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3 :: Only',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
         'Topic :: Text Processing :: Markup :: HTML',
         'Topic :: Utilities',
     ],
@@ -53,6 +50,6 @@ setup(
             'html5prescan = html5prescan.scan:main',
         ],
     },
-    python_requires='~=3.6',
+    python_requires='>=3.10',
     zip_safe=False,
 )
