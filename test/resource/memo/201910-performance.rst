@@ -5,37 +5,6 @@ MEMO
 I did basic performance tests against top 500 most popular websites.
 
 
-Preliminary Test
-----------------
-
-I created long strings in the form::
-
-    <NUM bytes of random characters><encode declaration>
-
-random characters::
-
-    ''.join(random.choices(string.printable)[0] for _ in range(NUM)).encode('ascii')
-
-declarations::
-
-    b'<meta charset="utf-8">'
-    b'<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'
-
-To parse 2000 of which:
-
-html5prescan::
-
-    NUM: 100        0.358 seconds
-    NUM: 500        0.772 seconds
-    NUM: 800        1.090 seconds
-
-w3lib::
-
-    NUM: 100        0.016 seconds
-    NUM: 500        0.017 seconds
-    NUM: 800        0.017 seconds
-
-
 Data Preparation
 ----------------
 
