@@ -31,7 +31,7 @@ with the same API as this library (reading standard input).
 Results
 -------
 
-I found a lot if "inconsistencies".
+I found a lot of "inconsistencies".
 
 The line format is: <filename> <line number> <returned> <expected> <input byte string>.
 
