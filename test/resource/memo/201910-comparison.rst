@@ -31,9 +31,11 @@ with the same API as this library (reading standard input).
 Results
 -------
 
-::
+I found a lot if "inconsistencies".
 
-    The line format is: <filename> <line number> <returned> <expected> <input byte string>.
+The line format is: <filename> <line number> <returned> <expected> <input byte string>.
+
+::
 
     python check_metasniffer.py (validator):
     prescan1.dat  64 iso-8859-2 None b'<!DOCTYPE HTML>\n<meta http-equiv="Content-Type content="text/html; charset=iso8859-2">'

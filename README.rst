@@ -4,11 +4,16 @@ html5prescan
 
 This is a python3 library, mainly does what WHATWG html5 spec calls 'prescan'.
 
-1. Check first UTF-8 and UTF-16 BOM
+1. Check UTF-8 BOM and UTF-16 BOM.
+
+    If it finds it, strips the BOM, and move on to 3.
+
+    (Strictly, This is not 'prescan' proper, a process before it).
 2. Prescan (parse <meta> tag to get Encoding Name)
+
 3. Resolve the retrieved Name to a Python codec name
 
-Note It just returns Python codec *name*, not codec object.
+    Note it just returns Python codec name string, not codec object.
 
 
 Install
@@ -42,8 +47,8 @@ where successful parsing returned.
 
 ``Encoding Label`` and ``Encoding Name`` are defined
 in `WHATWG Encoding <https://encoding.spec.whatwg.org/#names-and-labels>`__.
-The site provides ``encodings.json`` file for convenience,
-and the library uses the copy of it, when ``jsonfile`` argument is ``None``.
+The site provides ``encodings.json`` file for programmatic usage,
+and by default the library uses the copy of it (when ``jsonfile`` argument is ``None``).
 
 See the docstring of ``html5prescan.get`` for the details
 (e.g. ``$ pydoc 'html5prescan.get'``).
